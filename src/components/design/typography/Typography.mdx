@@ -1,0 +1,32 @@
+import * as Typograph from './typography.stories.svelte';
+import { Canvas, Meta } from '@storybook/blocks';
+
+<Meta of={Typograph} />
+
+# Typography
+
+Currently we are using the Exo 2 font available from Google Fonts.
+This is done because I imagine the UI looks a little futuristic-y.
+
+## Headers
+
+The headers start by using the base value for text for `h6` through `h4` with varying
+`font-weight`s. The text size and boldness change from there, giving `h1` through `h3`
+much more distinct sizes. It should be noted that all elements have their `line-height` set
+to automatically be `1.25em`. ***Beyond this line height, the elements have no default margin***
+
+<Canvas of={Typograph.Headers} />
+
+
+### Headers with other small details
+
+Some headers require a bit of extra knowledge with them in order to purvey all of the information
+necessary to the user. For this I've added in some styles for a `<small>` tag that
+is a direct child of the headers. This can be useful for things like info links,
+or other short (5 words or less) context.
+
+<Canvas of={Typograph['HeadersWithExtraDetails']} />
+
+### Examples of using headers with other components
+
+<Canvas of={Typograph['ExamplesWithOtherComponents']} />

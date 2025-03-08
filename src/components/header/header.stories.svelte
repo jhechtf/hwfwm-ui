@@ -15,7 +15,9 @@
 			{/snippet}
 			{#snippet actions()}
 				<section class="flex items-center gap-2">
-					<button class="rounded-full bg-sky-800 px-2 py-1 dark:bg-sky-500"> Action 1 </button>
+					<button class="rounded-full bg-sky-800 px-2 py-1 dark:bg-sky-500 dark:text-zinc-800">
+						Action 1
+					</button>
 					<button class="rounded-full border-2 border-sky-800 px-2 py-1 dark:border-sky-500">
 						Action 2
 					</button>
@@ -34,7 +36,9 @@
 				</svelte:element>
 				{#snippet actions()}
 					<section class="flex items-center gap-2">
-						<button class="rounded-full bg-sky-800 px-2 py-1 dark:bg-sky-500"> Action 1 </button>
+						<button class="rounded-full bg-sky-800 px-2 py-1 dark:bg-sky-500 dark:text-zinc-900">
+							Action 1
+						</button>
 						<button class="rounded-full border-2 border-sky-800 px-2 py-1 dark:border-sky-500">
 							Action 2
 						</button>

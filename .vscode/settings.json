@@ -1,10 +1,20 @@
 {
-  "[typescript]": {
-    "editor.formatOnSave": true,
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[svelte]": {
-    "editor.formatOnSave": true,
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+	"[typescript]": {
+		"editor.formatOnSave": true,
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[svelte]": {
+		"editor.formatOnSave": true,
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"deno.enable": true,
+	"deno.enablePaths": ["./db"],
+	"deno.config": "./db/deno.json",
+	"lnf.aliases": {
+		"$/": "${workspaceRoot}/",
+		"$src/": "${workspaceRoot}/src/",
+		"$lib/": "${workspaceRoot}/src/lib/",
+		"$components/": "${workspaceRoot}/src/components/",
+		"$routes/": "${workspaceRoot}/src/routes/"
+	}
 }
