@@ -16,10 +16,34 @@
 			{/snippet}
 
 			{#snippet footer()}
-				<div class="text-right">buttons and shit here</div>
+				<div class="flex justify-end gap-4 text-right">
+					<button class="rounded-full bg-emerald-400 px-2 py-1">Go to</button>
+				</div>
 			{/snippet}
 
 			Something something
 		</Card>
+	{/snippet}
+</Story>
+
+<Story name="Fancy">
+	{#snippet children({ ...args })}
+		<Card {...args} class="w-1/2" skipWrappingelements={['header']}>
+			{#snippet header()}
+				<img src="https://placehold.co/600x400" alt="hi" class="w-full" />
+			{/snippet}
+
+			{#snippet footer()}
+				Footer actions
+			{/snippet}
+
+			<div class="pt-4">Default content</div>
+		</Card>
+	{/snippet}
+</Story>
+
+<Story name="Variant">
+	{#snippet children({ ...args })}
+		<Card {...args} class="w-1/2 border"></Card>
 	{/snippet}
 </Story>

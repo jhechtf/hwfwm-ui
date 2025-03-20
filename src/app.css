@@ -2,84 +2,129 @@
 @plugin '@tailwindcss/forms';
 @plugin '@tailwindcss/typography';
 
-body,
-html {
-  min-height: 100vh;
-  color-scheme: light dark;
+/* Need these for the manual color switching */
+:root[data-theme='light'] {
+	color-scheme: light;
+}
+:root[data-theme='dark'] {
+	color-scheme: dark;
 }
 
-@media screen and (prefers-color-scheme:dark) {
-  html,
-  body {
-    color-scheme: dark;
-  }
-}
 
 @theme {
-  --color-page-background-token: light-dark( var(--color-zinc-200),var(--color-zinc-800));
-  --color-page-text-token: light-dark(var(--color-zinc-900), var(--color-zinc-100));
-  --color-iron-token: light-dark(#767778, #d4d7d8);
-  --color-bronze-token: light-dark(#9e6226 ,#cd7f32 );
-  --color-silver-token: light-dark(#C0C0C0, #c0c0c0);
+	--color-page-background-token: light-dark(var(--color-zinc-200), var(--color-zinc-800));
+	--color-page-text-token: light-dark(var(--color-zinc-900), var(--color-zinc-100));
+	--color-iron-token: light-dark(#767778, #d4d7d8);
+	--color-bronze-token: light-dark(#9e6226, #cd7f32);
+	--color-silver-token: light-dark(#c0c0c0, #c0c0c0);
+	--color-gold-token: light-dark(hsl(from #ffd700 h s calc(l - 10)), #ffd700);
+	--color-diamond-token: light-dark(hsl(from #b9f2ff h s calc(l - 32)), #b9f2ff);
+	--color-on-iron-token: light-dark(var(--color-white), var(--color-zinc-800));
+	--color-on-bronze-token: light-dark(#fff, #000);
+	--color-on-silver-token: light-dark(var(--color-zinc-900), var(--color-zinc-900));
+	--color-on-gold-token: light-dark(var(--color-zinc-800), var(--color-zinc-800));
+	--color-on-diamond-token: black;
+	--color-surface-token: light-dark(#000, hsl(from var(--color-violet-950) h calc(s - 45) l));
+	--font-sans: 'Exo 2', sans-serif;
 }
 
 @layer base {
-  h1 {
-    font-size: var(--text-5xl);
-    font-weight: var(--font-weight-bold);
-  }
-  h2 {
-    font-size: var(--text-3xl);
-    font-weight: var(--font-weight-semibold);
-  }
-  h3 {
+	h1 {
+    font-weight: var(--font-weight-black);
     font-size: var(--text-2xl);
-  }
-  h4 {
-    font-size: var(--text-xl);
-    font-weight: var(--font-weight-thin);
-  }
-  h5 {
-    text-decoration: underline;
-    font-size: var(--text-lg);
-  }
-  h6 {
+	}
+	h2 {
     font-weight: var(--font-weight-bold);
-  }
-  h1,h2, h3,h4,h5,h6 {
-    margin-block-end: var(--spacing);
-    small {
-      font-size: 0.85em;
-      margin-inline-start: calc(var(--spacing)*2);
-      /* background-color: orange; */
-      color: color-mix(in oklch, currentColor 45%,  light-dark(#000, #fff) 30%);
-    }
+    font-size: var(--text-xl);
+	}
+	h3 {
+		font-size: var(--text-lg);
+    font-weight: var(--font-weight-semibold);
+	}
+	h4 {
+		font-style: italic;
+    font-weight: var(--font-weight-medium);
+    font-size: var(--text-lg);
+	}
+	h5 {
+		text-decoration: underline;
+    font-weight: var(--font-weight-light);
+	}
+	h6 {
+    font-weight: var(--font-weight-extralight);
+	}
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		margin-block-end: var(--spacing);
+		text-wrap: balance;
+    line-height: 1.25em;
+		small {
+			font-size: 0.8em;
+			margin-inline-start: calc(var(--spacing) * 2);
+			/* background-color: orange; */
+			color: color-mix(in oklch, currentColor 45%, light-dark(#000, #fff) 30%);
+		}
+	}
+}
+
+@utility variant-* {
+  &:is(.card) {
+    background-color: --value(--color-*);
+    color: --value(--color-on-*);
   }
 }
 
+@utility size-* {
+  padding: --value(--spacing(*));
+}
+
 @layer components {
-  .card {
-    border-radius: var(--radius-lg);
-    background-color: var(--color-slate-200);
-    color: var(--color-zinc-900);
+	.card {
+		border-radius: var(--radius-lg);
+		background-color: light-dark(var(--color-zinc-300), var(--color-slate-200));
+		color: light-dark(var(--color-zinc-900),  var(--color-zinc-900));
 
-    > img {
-      border-radius: var(--radius-lg) var(--radius-lg) 0 0 ;
-    }
+		> img {
+			border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+		}
 
-    > header,
-    .card-header {
-      padding: calc(var(--spacing) * 4) calc(var(--spacing) * 4) 0;
-    }
+		> header,
+		.card-header {
+			padding: calc(var(--spacing) * 4) calc(var(--spacing) * 4) 0;
+		}
 
-    .card-body {
-      padding: 0 calc(var(--spacing) * 4);
-    }
+		.card-body {
+			padding: 0 calc(var(--spacing) * 4);
+		}
 
-    > footer,
-    .card-footer {
-      padding: 0 calc(var(--spacing) * 4) calc(var(--spacing) * 4);
-    }
+		> footer,
+		.card-footer {
+			padding: 0 calc(var(--spacing) * 4) calc(var(--spacing) * 4);
+		}
+	}
+	.button {
+		padding: var(--spacing) calc(var(--spacing) * 2);
+		color: var(--color-zinc-800);
+		border-radius: var(--radius-lg);
 
-  }
+		&.lg {
+			padding: calc(var(--spacing) * 2) calc(var(--spacing) * 3);
+			font-weight: var(--font-weight-semibold);
+		}
+		&.sm {
+			padding: var(--spacing);
+			font-size: 0.8rem;
+			border-radius: var(--radius-sm);
+		}
+		&.xl {
+			padding: calc(var(--spacing) * 3) calc(var(--spacing) * 4);
+			font-weight: var(--font-weight-bold);
+			font-size: var(--text-xl);
+			border-radius: var(--radius-xl);
+		}
+	}
 }
